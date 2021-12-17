@@ -1,0 +1,15 @@
+type Product @key(fields: "id") {
+    id: ID!
+    name: String!
+    upc: String!
+    price: Price!
+}
+
+extend type Price @key(fields: "id") {
+    id: ID! @external
+}
+
+extend type Query {
+    products: [Product]
+    product(id: ID!): Product!
+}

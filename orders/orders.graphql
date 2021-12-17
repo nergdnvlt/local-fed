@@ -1,0 +1,19 @@
+type Order @key(fields: "id") {
+    id: ID!
+    products: [Product]
+    user: User!
+}
+
+extend type Product @key(fields: "id") {
+    id: ID! @external
+}
+
+extend type User @key(fields: "id") {
+    id: ID! @external
+    orders: [Order]
+}
+
+extend type Query {
+    orders: [Order]
+    order(id: ID!): Order
+}

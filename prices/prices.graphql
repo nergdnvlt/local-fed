@@ -1,0 +1,10 @@
+type Price @key(fields: "id") {
+    id: ID!
+    usdPrice: Float
+    priceDecorator: String
+}
+
+extend type Query {
+    prices: [Price]
+    price(id: ID!): Price!
+}
